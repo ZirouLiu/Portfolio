@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zirou (Yoyo) Liu | Portfolio & Writing Samples</title>
+    <style>
+        /* 现代极简高级感设计系统 */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --text-muted: #666666;
+            --unc-blue: #4B9CD3; /* UNC Sky Blue */
+            --accent-light: #f4f9fc;
+            --card-border: #eef2f5;
+            --font-serif: "Georgia", serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.65;
+            padding: 0 2rem;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 0;
+            margin-bottom: 5rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            margin-left: 1.8rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--unc-blue);
+        }
+
+        /* 突出的简历按钮 */
+        nav a.resume-link {
+            color: var(--unc-blue);
+            border: 1px solid var(--unc-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        nav a.resume-link:hover {
+            background-color: var(--unc-blue);
+            color: #fff;
+        }
+
+        /* Intro / Hero */
+        .hero {
+            margin-bottom: 6rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            line-height: 1.25;
+            margin-bottom: 1.8rem;
+            letter-spacing: -1px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p a {
+            color: var(--text-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid var(--text-color);
+        }
+        
+        .hero p a:hover {
+            color: var(--unc-blue);
+            border-color: var(--unc-blue);
+        }
+
+        /* Sections General */
+        section {
+            margin-bottom: 6rem;
+        }
+
+        h2.section-title {
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Writing Samples Grid & Cards */
+        .samples-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .sample-card {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sample-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            border-color: #d2e4f1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--unc-blue);
+            font-weight: 700;
+            background: var(--accent-light);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .sample-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .sample-card p.description {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        /* 内嵌的未来预览样式（人类学/信息学气质） */
+        .snippet-box {
+            background-color: var(--accent-light);
+            border-left: 3px solid var(--unc-blue);
+            padding: 1.2rem;
+            margin: 1rem 0 1.5rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .snippet-box span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--unc-blue);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .snippet-text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* 链接组合 */
+        .links-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 1.5px solid var(--text-color);
+            padding-bottom: 1px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            color: var(--unc-blue);
+            border-color: var(--unc-blue);
+        }
+
+        /* Contact Section */
+        .contact-box {
+            text-align: center;
+            background: var(--accent-light);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #eee;
+            padding: 2.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        footer a:hover {
+            color: var(--unc-blue);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 0 1rem; }
+            header { margin-bottom: 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .card-header { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 头部导航（去除了Experience，融入了Resume链接） -->
+        <header>
+            <div class="logo">Zirou Liu</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#samples">Writing Samples</a>
+                <a href="#contact">Contact</a>
+                <a href="files/Lenovo Talent Brand_Resume_ZirouLiu_2.pdf" class="resume-link" target="_blank">View Resume</a>
+            </nav>
+        </header>
+
+        <!-- Intro 模块 -->
+<!-- Intro 模块 -->
+        <section id="about" class="hero" style="display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; padding: 4rem 0;">
+            <!-- 左侧：原本的文字内容，一字未变 -->
+            <div class="hero-text" style="flex: 1; min-width: 300px;">
+                <h1>I bridge data science with human behavior to build better brand experiences.</h1>
+                <p>
+                    Hi, I'm Zirou (Yoyo) Liu. As an Honors Carolina junior double-majoring in Information Science and Anthropology at UNC-Chapel Hill, I live at the intersection of technical analytics and human insight. I don't just look at algorithms; I look at how people interact with them. My goal is to find where corporate messaging and AI-generated responses disconnect, translating messy user data into clear, compelling stories.
+                </p>
+                <p style="font-size: 1rem; color: var(--text-muted); margin-top: 1.5rem;">
+                    Looking for my full background? You can review my <a href="files/Lenovo Talent Brand_Resume_ZirouLiu_2.pdf" target="_blank">complete resume here</a>.
+                </p>
+            </div>
+            
+            <!-- 右侧：新加入的个人照片 -->
+            <div class="hero-image" style="flex: 0 0 280px; display: flex; justify-content: center; align-items: center;">
+                <img src="files/profile.jpg" alt="Zirou Liu" style="width: 280px; height: 280px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 3px solid #fff;">
+            </div>
+        </section>
+
+        <!-- Featured Writing Samples 模块 -->
+        <section id="samples">
+            <h2 class="section-title">Featured Writing & Design Samples</h2>
+            <div class="samples-list">
+
+<!-- Card 1: Prompt Blueprints 卡片 -->
+                <div class="sample-card" id="prompt-blueprint-card">
+                    <div class="card-header">
+                        <h3>Optimized Prompt Blueprints</h3>
+                        <span class="tag">AI Search & GEO Frameworks</span>
+                    </div>
+                    <p class="description">
+                        Designed custom prompt frameworks to bridge the gap between complex AI models and real-world user needs. These samples demonstrate my hands-on understanding of how to structure inputs so that LLMs extract reliable, accurate data rather than vague summaries.
+                    </p>
+                    
+                    <!-- Example 1 内嵌行 -->
+                    <div class="prompt-row">
+                        <h4>Example 1: Student Workflow — High-Density Literature Review Guide</h4>
+                        <p>Developed during my Perplexity AI ambassadorship. After discovering that non-technical students struggled with vague AI summaries, I engineered this prompt template. It forces LLMs to organize unstructured research texts into precise data matrices with accurate source citations, eliminating hallucination during literature reviews.</p>
+                        <div class="links-group">
+                            <a href="files/Optimized Prompt for Literature Review.md" class="btn" target="_blank">View the Student Prompt (.md) →</a>
+                        </div>
+                    </div>
+
+                    <!-- Example 2 内嵌行 -->
+                    <div class="prompt-row">
+                        <h4>Example 2: Corporate Strategy — GEO Employer Brand Audit Flow</h4>
+                        <p>Created specifically as a diagnostic framework for corporate Talent Branding. This prompt reverse-engineers how an AI search engine crawls the web, identifying "narrative gaps" between a company's official Employer Value Proposition (EVP) and public, third-party model responses.</p>
+                        <div class="links-group">
+                            <a href="files/Optimized Prompt for GEO Analysis.md" class="btn" target="_blank">View the Audit Prompt (.md) →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2: 机构传播与 Newsletter -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Institutional Communications & Brand Strategy</h3>
+                        <span class="tag">Corporate Copywriting & PR</span>
+                    </div>
+                    <p class="description">
+                        As the Communications Committee Chair for the UNC Information and Library Science Student Association (ILSSA), I steward our institutional voice. Below is a published digital edition alongside a strategic narrative snippet crafted to define our program's value proposition for the upcoming semester.
+                    </p>
+                    
+                    <!-- 嵌入 Future Snippet -->
+                    <div class="snippet-box">
+                        <span>Upcoming Feature (Scheduled for Aug 17)</span>
+                        <div class="snippet-text">
+                            "At the UNC School of Information and Library Science (SILS), we don't just manage data; we champion the human side of the digital revolution. Ranked #3 in the U.S. and #4 globally, SILS stands at the critical intersection of people, information, and technology. Our mission is to transform complex global data into accessible, trusted knowledge that drives scientific discovery, strengthens communities, and fosters equitable social progress. Through an agile, interdisciplinary curriculum and world-class faculty leadership, we empower future professionals to architect inclusive digital spaces, steward vital cultural assets, and pioneer ethical user experiences. By bridging advanced technical infrastructure with profound human-centric design, SILS ensures that modern technological innovation consistently advances the public good. Here, your passion for information becomes a catalyst for global impact."
+                        </div>
+                    </div>
+
+                    <div class="links-group">
+                        <a href="files/ILSSA_Newsletter.pdf" class="btn" target="_blank">View Past Newsletter (Published April 2) →</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: 小红书与跨境营销 -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Cross-Cultural Creative Content &  Strategy Behind the Narrative</h3>
+                        <span class="tag">Digital Marketing & Gen Z Strategy</span>
+                    </div>
+                    <p class="description">
+                        For this Yamibuy viral campaign, I rejected generic product catalog bumping. Instead, I analyzed the psychological pain points of Chinese international students facing high stress and late-night study blocks. I launched a wellness-centered narrative, explicitly calling on peers to replace unhealthy, high-sugar bubble teas with a traditional, healthy homemade Asian dessert. I walked users through the recipe steps, positioning it as the ultimate stress-relief comfort food. Crucially, I embedded a call-to-action: to replicate this dessert, students needed to purchase 3 highly specific ingredient raw materials exclusive to the Yamibuy platform. This subtle, benefit-led storytelling drove a peak organic reach of 1,600+ views and directly converted casual social readers into active e-commerce buyers.
+                    </p>
+                    <div class="links-group">
+                        <a href="files/RedNote_translation.pdf" class="btn" target="_blank">English Translation (PDF) →</a>
+                        <a href="files/RedNote.PNG" class="btn" target="_blank">Original Post (Chinese) →</a>
+                        <a href="files/PeakView.png" class="btn" target="_blank">Engagement Metrics Screenshot →</a>
+                    </div>
+                </div>
+
+                <!-- Card 4: 联合营销海报 -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Visual Direction & Co-Branded Campaign Strategy</h3>
+                        <span class="tag">Creative Direction</span>
+                    </div>
+                    <p class="description">
+                        A promotional creative asset engineered for the co-branded campaign between Yamibuy and HOX. This project showcases the tactical ability to align dual corporate brand guidelines into an engaging, human-centric visual asset that successfully catalyzed offline campus engagement.
+                    </p>
+                    <div class="links-group">
+                        <a href="files/Yami&HOX.PNG" class="btn" target="_blank">View Full-Res Poster (PNG) →</a>
+                    </div>
+                </div>
+                
+                <!-- Card 6: Genially 交互叙事卡片 -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Interactive Digital Narrative on "Smart Pill"</h3>
+                        <span class="tag">UX Design / Biosociocultural Research</span>
+                    </div>
+                    <p class="description">
+                        When complex academic research stays trapped in dense 10-page papers, it loses its human impact. For this independent secondary research project, I wanted to investigate why the non-medical use of Adderall has transformed from an individual student dilemma into a systemic campus-wide culture. Instead of writing a traditional static report, I engineered an interactive web experience using Genially to map out the "invisible systems" driving this phenomenon—bridging neuro-biomechanisms with deep anthropological theory. To ensure the dense technical and medical data was accessible to non-technical stakeholders, I executed rigorous usability testing with peers and TAs, continuously iterating the information hierarchy, interface logic, and visual assets based on user cognitive load. This project highlights my unique ability to diagnose systemic human behaviors and translate raw, multi-layered research into highly engaging, empathetic UX storytelling.
+                    </p>
+                    <div class="links-group">
+                        <a href="https://view.genially.com/6910c36e9766510a7b760eba" class="btn" target="_blank">Launch Interactive Presentation (Genially) →</a>
+                    </div>
+                </div>
+
+                <!-- Card 5: 人类学独立研究 -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Ethnographic Analysis & Brand Perceptions</h3>
+                        <span class="tag">Qualitative Research & Social Theory</span>
+                    </div>
+                    <p class="description">
+                        An independent ethnographic research paper analyzing how material subcultures and digital interactions shape identity perception among college students. This work demonstrates my expertise in building qualitative coding frameworks, cross-analyzing unstructured text data, and extracting high-frequency semantic trends to measure public brand sentiment.
+                    </p>
+                    <div class="links-group">
+                        <a href="files/Yoyo_Anth284_Research.pdf" class="btn" target="_blank">Read Full Research Paper (PDF) →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact 模块 -->
+        <section id="contact">
+            <div class="contact-box">
+                <h2>Get in Touch</h2>
+                <p>I'm always excited to connect regarding talent branding, AI search optimization (GEO/AEO), and digital content strategy.</p>
+                <a href="mailto:zirliuyy@unc.edu" class="btn">zirliuyy@unc.edu</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Zirou Liu. Built with HTML/CSS. Hosted on UNC Server.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+                <a href="https://linkedin.com/in/zirou-liu" target="_blank">LinkedIn</a>
+            </p>
+        </footer>
+    </div>
