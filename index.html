@@ -5,15 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zirou (Yoyo) Liu | Portfolio & Writing Samples</title>
     <style>
-        /* 现代极简高级感设计系统 */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
         :root {
-            --bg-color: #ffffff;
-            --text-color: #1a1a1a;
-            --text-muted: #666666;
-            --unc-blue: #4B9CD3; /* UNC Sky Blue */
-            --accent-light: #f4f9fc;
-            --card-border: #eef2f5;
-            --font-serif: "Georgia", serif;
+            --bg-color: #f5f2ea;
+            --bg-soft: #fefcf8;
+            --surface: rgba(255, 255, 255, 0.76);
+            --surface-strong: rgba(255, 255, 255, 0.92);
+            --text-color: #1c2430;
+            --text-muted: #5f6b7a;
+            --accent-blue: #3d7bbf;
+            --accent-cyan: #2ca6a4;
+            --accent-gold: #d69a2d;
+            --accent-rose: #d96b86;
+            --accent-light: #eef7ff;
+            --card-border: rgba(90, 108, 130, 0.16);
+            --shadow-lg: 0 24px 60px rgba(21, 31, 44, 0.12);
+            --shadow-md: 0 14px 34px rgba(21, 31, 44, 0.08);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 16px;
+            --font-sans: 'Plus Jakarta Sans', 'Avenir Next', 'Segoe UI', sans-serif;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
         }
 
         * {
@@ -27,253 +40,622 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
+            font-family: var(--font-sans);
             color: var(--text-color);
-            line-height: 1.65;
-            padding: 0 2rem;
+            line-height: 1.7;
+            padding: 0 1.5rem;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(61, 123, 191, 0.16), transparent 34%),
+                radial-gradient(circle at top right, rgba(42, 166, 164, 0.18), transparent 28%),
+                radial-gradient(circle at bottom center, rgba(217, 107, 134, 0.12), transparent 30%),
+                linear-gradient(180deg, #fffdf9 0%, #f6f2eb 56%, #f4efe6 100%);
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            inset: auto;
+            z-index: -2;
+            pointer-events: none;
+            filter: blur(24px);
+            opacity: 0.75;
+        }
+
+        body::before {
+            width: 24rem;
+            height: 24rem;
+            top: -6rem;
+            left: -8rem;
+            border-radius: 50%;
+            background: rgba(61, 123, 191, 0.18);
+        }
+
+        body::after {
+            width: 20rem;
+            height: 20rem;
+            right: -6rem;
+            top: 18rem;
+            border-radius: 50%;
+            background: rgba(42, 166, 164, 0.16);
         }
 
         .container {
-            max-width: 850px;
+            max-width: 1160px;
             margin: 0 auto;
+            padding: 1rem 0 2.5rem;
         }
 
-        /* Navbar */
         header {
+            position: sticky;
+            top: 0.75rem;
+            z-index: 30;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2.5rem 0;
-            margin-bottom: 5rem;
+            gap: 1rem;
+            padding: 1rem 1.15rem;
+            margin: 0.75rem 0 3.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 12px 32px rgba(21, 31, 44, 0.08);
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.15rem;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            white-space: nowrap;
         }
 
         nav {
             display: flex;
             align-items: center;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         nav a {
             text-decoration: none;
             color: var(--text-muted);
-            margin-left: 1.8rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            padding: 0.65rem 0.9rem;
+            border-radius: 999px;
+            transition: transform 0.22s ease, color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
         }
 
         nav a:hover {
-            color: var(--unc-blue);
+            color: var(--text-color);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 18px rgba(21, 31, 44, 0.06);
+            transform: translateY(-1px);
         }
 
-        /* 突出的简历按钮 */
         nav a.resume-link {
-            color: var(--unc-blue);
-            border: 1px solid var(--unc-blue);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            transition: all 0.2s ease;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            box-shadow: 0 12px 24px rgba(61, 123, 191, 0.24);
+            border: 1px solid rgba(255, 255, 255, 0.16);
         }
 
         nav a.resume-link:hover {
-            background-color: var(--unc-blue);
             color: #fff;
+            background: linear-gradient(135deg, #356ea7, #24918f);
+            box-shadow: 0 14px 28px rgba(61, 123, 191, 0.28);
         }
 
-        /* Intro / Hero */
-        .hero {
-            margin-bottom: 6rem;
-        }
-
-        .hero h1 {
-            font-size: 2.6rem;
-            line-height: 1.25;
-            margin-bottom: 1.8rem;
-            letter-spacing: -1px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 720px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p a {
-            color: var(--text-color);
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid var(--text-color);
-        }
-        
-        .hero p a:hover {
-            color: var(--unc-blue);
-            border-color: var(--unc-blue);
-        }
-
-        /* Sections General */
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 5.5rem;
+            scroll-margin-top: 6.5rem;
+        }
+
+        #about {
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+            gap: 2rem;
+            align-items: center;
+            padding: 1rem 0 0;
+            margin-bottom: 5rem;
+        }
+
+        .hero-text,
+        .hero-image {
+            animation: fadeUp 0.85s ease both;
+        }
+
+        .hero-text {
+            max-width: 42rem;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 4vw, 4.15rem) !important;
+            line-height: 1.03 !important;
+            letter-spacing: -0.05em !important;
+            margin-bottom: 1.5rem !important;
+            font-weight: 700 !important;
+            color: var(--text-color);
+        }
+
+        .hero-text p {
+            font-size: clamp(1.02rem, 1.4vw, 1.16rem) !important;
+            color: var(--text-muted);
+            margin-bottom: 1.1rem !important;
+            max-width: 39rem;
+        }
+
+        .hero-text p:last-child {
+            margin-bottom: 0 !important;
+            font-size: 0.98rem !important;
+        }
+
+        .hero-text a {
+            color: var(--text-color);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(28, 36, 48, 0.55);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .hero-text a:hover {
+            color: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .hero-image {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .hero-image img {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 520px;
+            object-fit: cover;
+            border-radius: var(--radius-xl) !important;
+            border: 1px solid rgba(255, 255, 255, 0.72) !important;
+            box-shadow: var(--shadow-lg) !important;
+            transform: translateZ(0);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+        }
+
+        .hero-image img:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 28px 64px rgba(21, 31, 44, 0.16) !important;
+            filter: saturate(1.03);
+        }
+
+        .hero-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            max-height: 520px;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, rgba(61, 123, 191, 0.12), rgba(42, 166, 164, 0.1), rgba(217, 107, 134, 0.08));
+            isolation: isolate;
+        }
+
+        .hero-stage::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.18), transparent 40%, rgba(255, 255, 255, 0.1));
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-stage::after {
+            content: '';
+            position: absolute;
+            inset: auto 1rem 1rem auto;
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.36), transparent 68%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-stage .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+            max-height: none !important;
+            object-fit: cover !important;
+            opacity: 0;
+            transform: scale(1.02);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+            z-index: 0;
+        }
+
+        .hero-stage .hero-slide[data-mode="portrait"] {
+            object-fit: contain !important;
+            background: linear-gradient(180deg, rgba(243, 247, 251, 0.86), rgba(235, 241, 246, 0.96));
+        }
+
+        .hero-stage .hero-slide.is-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        .hero-image p {
+            font-size: 0.88rem !important;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.55;
+            max-width: 40rem;
+            margin-top: 0.1rem !important;
+        }
+
+        .hero-caption {
+            transition: opacity 0.45s ease;
+        }
+
+        .hero-caption.is-updating {
+            opacity: 0.35;
         }
 
         h2.section-title {
-            font-size: 1.6rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 0.5rem;
+            font-size: clamp(1.45rem, 2vw, 1.9rem);
+            margin-bottom: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(92, 108, 129, 0.14);
+            position: relative;
         }
 
-        /* Writing Samples Grid & Cards */
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 5rem;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+        }
+
         .samples-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.4rem;
         }
 
         .sample-card {
-            background: #ffffff;
-            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.82));
+            border-radius: var(--radius-xl);
             border: 1px solid var(--card-border);
-            padding: 2rem;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+            opacity: 0;
+            transform: translateY(18px);
+            will-change: opacity, transform;
+        }
+
+        .sample-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 0.28rem;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-rose));
+        }
+
+        .sample-card::after {
+            content: '';
+            position: absolute;
+            inset: auto -6rem -8rem auto;
+            width: 14rem;
+            height: 14rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(61, 123, 191, 0.09), transparent 68%);
+            pointer-events: none;
         }
 
         .sample-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-            border-color: #d2e4f1;
+            transform: translateY(-5px);
+            box-shadow: 0 28px 60px rgba(21, 31, 44, 0.12);
+            border-color: rgba(61, 123, 191, 0.28);
+        }
+
+        .sample-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 0.75rem;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--unc-blue);
-            font-weight: 700;
-            background: var(--accent-light);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
+            gap: 0.9rem;
+            margin-bottom: 0.8rem;
         }
 
         .sample-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
+            font-size: clamp(1.16rem, 1.55vw, 1.55rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
             color: var(--text-color);
+            max-width: 44rem;
+        }
+
+        .tag {
+            flex: none;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: #0f4d63;
+            font-weight: 800;
+            background: linear-gradient(135deg, rgba(61, 123, 191, 0.14), rgba(42, 166, 164, 0.14));
+            padding: 0.55rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(61, 123, 191, 0.16);
         }
 
         .sample-card p.description {
             font-size: 1rem;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.1rem;
+            max-width: 66rem;
         }
 
-        /* 内嵌的未来预览样式（人类学/信息学气质） */
+        .prompt-row {
+            position: relative;
+            padding: 1rem 1rem 1.1rem;
+            margin-top: 1rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, rgba(246, 249, 252, 0.9), rgba(255, 255, 255, 0.96));
+            border: 1px solid rgba(61, 123, 191, 0.12);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .prompt-row.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prompt-row h4 {
+            font-size: 1rem;
+            line-height: 1.45;
+            margin-bottom: 0.55rem;
+            color: var(--text-color);
+        }
+
+        .prompt-row p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
         .snippet-box {
-            background-color: var(--accent-light);
-            border-left: 3px solid var(--unc-blue);
-            padding: 1.2rem;
-            margin: 1rem 0 1.5rem 0;
-            border-radius: 0 6px 6px 0;
+            background: linear-gradient(180deg, rgba(61, 123, 191, 0.08), rgba(42, 166, 164, 0.08));
+            border: 1px solid rgba(61, 123, 191, 0.15);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.1rem 1.1rem 1rem;
+            margin: 1rem 0 1.35rem 0;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            box-shadow: 0 10px 22px rgba(21, 31, 44, 0.05);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .snippet-box.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .snippet-box span {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             text-transform: uppercase;
-            font-weight: 700;
-            color: var(--unc-blue);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
+            font-weight: 800;
+            color: var(--accent-blue);
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.12em;
         }
 
         .snippet-text {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 0.95rem;
-            color: #444;
-            line-height: 1.6;
+            font-size: 1rem;
+            color: #425064;
+            line-height: 1.65;
         }
 
-        /* 链接组合 */
         .links-group {
             display: flex;
-            gap: 1.2rem;
+            gap: 0.85rem;
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
+            gap: 0.4rem;
             text-decoration: none;
             color: var(--text-color);
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-bottom: 1.5px solid var(--text-color);
-            padding-bottom: 1px;
-            transition: all 0.2s;
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 0.7rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.76);
+            border: 1px solid rgba(92, 108, 129, 0.16);
+            box-shadow: 0 8px 20px rgba(21, 31, 44, 0.05);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, color 0.22s ease, background-color 0.22s ease;
         }
 
         .btn:hover {
-            color: var(--unc-blue);
-            border-color: var(--unc-blue);
+            color: #fff;
+            border-color: transparent;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            box-shadow: 0 14px 28px rgba(61, 123, 191, 0.22);
+            transform: translateY(-1px);
         }
 
-        /* Contact Section */
         .contact-box {
             text-align: center;
-            background: var(--accent-light);
-            padding: 3rem 2rem;
-            border-radius: 12px;
+            background:
+                radial-gradient(circle at top left, rgba(61, 123, 191, 0.14), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(42, 166, 164, 0.16), transparent 28%),
+                var(--surface-strong);
+            padding: 3rem 1.5rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-box h2 {
+            font-size: clamp(1.45rem, 2vw, 2rem);
+            letter-spacing: -0.03em;
+            margin-bottom: 0.8rem;
         }
 
         .contact-box p {
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            margin: 0 auto 1.5rem;
+            font-size: 1.02rem;
+            max-width: 48rem;
         }
 
-        /* Footer */
         footer {
-            border-top: 1px solid #eee;
-            padding: 2.5rem 0;
+            border-top: 1px solid rgba(92, 108, 129, 0.16);
+            padding: 2rem 0 1rem;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
-            margin-top: 4rem;
+            margin-top: 3.5rem;
         }
 
         footer a {
             color: var(--text-color);
             text-decoration: none;
-            font-weight: 500;
-        }
-        footer a:hover {
-            color: var(--unc-blue);
+            font-weight: 600;
         }
 
-        @media (max-width: 600px) {
-            body { padding: 0 1rem; }
-            header { margin-bottom: 3rem; }
-            .hero h1 { font-size: 2rem; }
-            .card-header { flex-direction: column; gap: 0.5rem; }
+        footer a:hover {
+            color: var(--accent-blue);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 920px) {
+            #about {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 0 0.9rem;
+            }
+
+            .container {
+                padding-top: 0.6rem;
+            }
+
+            header {
+                top: 0.5rem;
+                margin-bottom: 2.6rem;
+                padding: 0.95rem 1rem;
+                border-radius: 24px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            nav a {
+                padding: 0.55rem 0.8rem;
+                font-size: 0.86rem;
+            }
+
+            section {
+                margin-bottom: 4.4rem;
+            }
+
+            .hero-text h1 {
+                line-height: 1.05 !important;
+            }
+
+            .sample-card,
+            .contact-box {
+                border-radius: 24px;
+                padding: 1.2rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tag {
+                font-size: 0.68rem;
+            }
+
+            .links-group {
+                gap: 0.65rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-image img {
+                max-height: 360px;
+            }
+
+            .hero-stage {
+                aspect-ratio: 3 / 4;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
         }
     </style>
 </head>
@@ -287,27 +669,34 @@
                 <a href="#about">About</a>
                 <a href="#samples">Writing Samples</a>
                 <a href="#contact">Contact</a>
-                <a href="files/Lenovo Talent Brand_Resume_ZirouLiu_2.pdf" class="resume-link" target="_blank">View Resume</a>
+                <a href="files/Lenovo Talent Brand_Resume_ZirouLiu.pdf" class="resume-link" target="_blank">View Resume</a>
             </nav>
         </header>
 
-        <!-- Intro 模块 -->
-<!-- Intro 模块 -->
-        <section id="about" class="hero" style="display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; padding: 4rem 0;">
-            <!-- 左侧：原本的文字内容，一字未变 -->
-            <div class="hero-text" style="flex: 1; min-width: 300px;">
-                <h1>I bridge data science with human behavior to build better brand experiences.</h1>
-                <p>
+ <!-- Intro 模块 -->
+        <section id="about" style="padding: 4rem 0 2rem 0; margin-bottom: 4rem;">
+            <!-- 上部分：纯文字内容，横向自然舒展 -->
+            <div class="hero-text" style="max-width: 750px; margin-bottom: 3.5rem;">
+                <h1 style="font-size: 2.6rem; line-height: 1.25; margin-bottom: 1.8rem; letter-spacing: -1px; font-weight: 700;">
+                    I bridge technology with human behavior to build better brand experiences.
+                </h1>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.5rem;">
                     Hi, I'm Zirou (Yoyo) Liu. As an Honors Carolina junior double-majoring in Information Science and Anthropology at UNC-Chapel Hill, I live at the intersection of technical analytics and human insight. I don't just look at algorithms; I look at how people interact with them. My goal is to find where corporate messaging and AI-generated responses disconnect, translating messy user data into clear, compelling stories.
                 </p>
-                <p style="font-size: 1rem; color: var(--text-muted); margin-top: 1.5rem;">
-                    Looking for my full background? You can review my <a href="files/Lenovo Talent Brand_Resume_ZirouLiu_2.pdf" target="_blank">complete resume here</a>.
+                <p style="font-size: 1rem; color: var(--text-muted);">
+                    Looking for my full background? You can review my <a href="files/Lenovo Talent Brand_Resume_ZirouLiu.pdf" target="_blank" style="color: var(--text-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--text-color); transition: all 0.2s;">complete resume here</a>.
                 </p>
             </div>
             
-            <!-- 右侧：新加入的个人照片 -->
-            <div class="hero-image" style="flex: 0 0 280px; display: flex; justify-content: center; align-items: center;">
-                <img src="files/profile.jpg" alt="Zirou Liu" style="width: 280px; height: 280px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 3px solid #fff;">
+            <!-- 下部分：宽幅大合照 Banner -->
+            <div class="hero-image" style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <div class="hero-stage" aria-label="Rotating hero image gallery">
+                    <img class="hero-slide is-active" src="files/teampicture.png" alt="Zirou Liu with Lenovo Dragon Boat Team" data-mode="landscape">
+                    <img class="hero-slide" src="files/personalpic.png" alt="Zirou Liu holding the trophy and medal" data-mode="portrait">
+                </div>
+                <p class="hero-caption" style="font-size: 0.85rem; color: var(--text-muted); text-align: center; line-height: 1.5; max-width: 650px; margin-top: 0.2rem;">
+                    I (2nd from the right) volunteered as a paddler for Lenovo at the 2025 Triangle Area Dragon Boat Festival, securing 1st place in Division D with amazing Team Spirit.
+                </p>
             </div>
         </section>
 
@@ -327,7 +716,7 @@
                     </p>
                     
                     <!-- Example 1 内嵌行 -->
-                    <div class="prompt-row">
+                    <div class="prompt-row" style="margin-bottom: 2rem;">
                         <h4>Example 1: Student Workflow — High-Density Literature Review Guide</h4>
                         <p>Developed during my Perplexity AI ambassadorship. After discovering that non-technical students struggled with vague AI summaries, I engineered this prompt template. It forces LLMs to organize unstructured research texts into precise data matrices with accurate source citations, eliminating hallucination during literature reviews.</p>
                         <div class="links-group">
@@ -344,29 +733,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Card 2: 机构传播与 Newsletter -->
-                <div class="sample-card">
-                    <div class="card-header">
-                        <h3>Institutional Communications & Brand Strategy</h3>
-                        <span class="tag">Corporate Copywriting & PR</span>
-                    </div>
-                    <p class="description">
-                        As the Communications Committee Chair for the UNC Information and Library Science Student Association (ILSSA), I steward our institutional voice. Below is a published digital edition alongside a strategic narrative snippet crafted to define our program's value proposition for the upcoming semester.
-                    </p>
-                    
-                    <!-- 嵌入 Future Snippet -->
-                    <div class="snippet-box">
-                        <span>Upcoming Feature (Scheduled for Aug 17)</span>
-                        <div class="snippet-text">
-                            "At the UNC School of Information and Library Science (SILS), we don't just manage data; we champion the human side of the digital revolution. Ranked #3 in the U.S. and #4 globally, SILS stands at the critical intersection of people, information, and technology. Our mission is to transform complex global data into accessible, trusted knowledge that drives scientific discovery, strengthens communities, and fosters equitable social progress. Through an agile, interdisciplinary curriculum and world-class faculty leadership, we empower future professionals to architect inclusive digital spaces, steward vital cultural assets, and pioneer ethical user experiences. By bridging advanced technical infrastructure with profound human-centric design, SILS ensures that modern technological innovation consistently advances the public good. Here, your passion for information becomes a catalyst for global impact."
-                        </div>
-                    </div>
-
-                    <div class="links-group">
-                        <a href="files/ILSSA_Newsletter.pdf" class="btn" target="_blank">View Past Newsletter (Published April 2) →</a>
-                    </div>
-                </div>
 
                 <!-- Card 3: 小红书与跨境营销 -->
                 <div class="sample-card">
@@ -381,20 +747,6 @@
                         <a href="files/RedNote_translation.pdf" class="btn" target="_blank">English Translation (PDF) →</a>
                         <a href="files/RedNote.PNG" class="btn" target="_blank">Original Post (Chinese) →</a>
                         <a href="files/PeakView.png" class="btn" target="_blank">Engagement Metrics Screenshot →</a>
-                    </div>
-                </div>
-
-                <!-- Card 4: 联合营销海报 -->
-                <div class="sample-card">
-                    <div class="card-header">
-                        <h3>Visual Direction & Co-Branded Campaign Strategy</h3>
-                        <span class="tag">Creative Direction</span>
-                    </div>
-                    <p class="description">
-                        A promotional creative asset engineered for the co-branded campaign between Yamibuy and HOX. This project showcases the tactical ability to align dual corporate brand guidelines into an engaging, human-centric visual asset that successfully catalyzed offline campus engagement.
-                    </p>
-                    <div class="links-group">
-                        <a href="files/Yami&HOX.PNG" class="btn" target="_blank">View Full-Res Poster (PNG) →</a>
                     </div>
                 </div>
                 
@@ -419,10 +771,47 @@
                         <span class="tag">Qualitative Research & Social Theory</span>
                     </div>
                     <p class="description">
-                        An independent ethnographic research paper analyzing how material subcultures and digital interactions shape identity perception among college students. This work demonstrates my expertise in building qualitative coding frameworks, cross-analyzing unstructured text data, and extracting high-frequency semantic trends to measure public brand sentiment.
+                        An independent ethnographic research paper investigating how UNC students construct personal brands through material objects (e.g., Stanley Cups vs. gifted jewelry). Synthesized a collaborative corpus of 72 interviews by building a structured qualitative coding framework in Excel to normalize and de-duplicate 100+ consumer items. Grounded in Simmel and Mauss’s social theories, the study maps the daily tension between trend-driven conformity and authentic, emotion-rooted brand attachment—providing actionable methodologies for tracking modern consumer sentiment and subcultural authenticity.
                     </p>
                     <div class="links-group">
                         <a href="files/Yoyo_Anth284_Research.pdf" class="btn" target="_blank">Read Full Research Paper (PDF) →</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: 机构传播与 Newsletter -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Institutional Communications & Brand Strategy</h3>
+                        <span class="tag">Corporate Copywriting & PR</span>
+                    </div>
+                    <p class="description">
+                        As the Communications Committee Chair for the UNC Information and Library Science Student Association (ILSSA), I steward our institutional voice. Below is a published digital edition alongside a strategic narrative snippet crafted to define our program's value proposition for the upcoming semester.
+                    </p>
+                    
+                    <!-- 嵌入 Future Snippet -->
+                    <div class="snippet-box">
+                        <span>Upcoming Feature (Scheduled for Aug 17)</span>
+                        <div class="snippet-text">
+                            "At the UNC School of Information and Library Science (SILS), we don't just manage data; we champion the human side of the digital revolution. Ranked #3 in the U.S. and #4 globally, SILS stands at the critical intersection of people, information, and technology. Our mission is to transform complex global data into accessible, trusted knowledge that drives scientific discovery, strengthens communities, and fosters equitable social progress. Through an agile, interdisciplinary curriculum and world-class faculty leadership, we empower future professionals to architect inclusive digital spaces, steward vital cultural assets, and pioneer ethical user experiences. By bridging advanced technical infrastructure with profound human-centric design, SILS ensures that modern technological innovation consistently advances the public good. Here, your passion for information becomes a catalyst for global impact."
+                        </div>
+                    </div>
+
+                    <div class="links-group">
+                        <a href="files/ILSSA_Newsletter.pdf" class="btn" target="_blank">View Past Newsletter (Published April 2) →</a>
+                    </div>
+                </div>
+
+                <!-- Card 4: 联合营销海报 -->
+                <div class="sample-card">
+                    <div class="card-header">
+                        <h3>Visual Direction & Co-Branded Campaign Strategy</h3>
+                        <span class="tag">Creative Direction</span>
+                    </div>
+                    <p class="description">
+                        A promotional creative asset engineered for the co-branded campaign between Yamibuy and HOX. This project showcases the tactical ability to align dual corporate brand guidelines into an engaging, human-centric visual asset that successfully catalyzed offline campus engagement.
+                    </p>
+                    <div class="links-group">
+                        <a href="files/Yami&HOX.PNG" class="btn" target="_blank">View Full-Res Poster (PNG) →</a>
                     </div>
                 </div>
 
@@ -430,19 +819,24 @@
         </section>
 
         <!-- Contact 模块 -->
+<!-- Contact 模块 -->
         <section id="contact">
             <div class="contact-box">
                 <h2>Get in Touch</h2>
-                <p>I'm always excited to connect regarding talent branding, AI search optimization (GEO/AEO), and digital content strategy.</p>
-                <a href="mailto:zirliuyy@unc.edu" class="btn">zirliuyy@unc.edu</a>
+                <p>I'm always excited to connect regarding talent branding, AI search optimization (GEO/AEO), and digital content strategy. Please let me know if you have any questions!</p>
+                <!-- 将两个核心联系方式用 flex 布局并排居中排列 -->
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="mailto:zirliuyy@unc.edu" class="btn">zirliuyy@unc.edu</a>
+                    <a href="https://linkedin.com/in/zirou-liu" target="_blank" class="btn">LinkedIn Profile &rarr;</a>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Zirou Liu. Built with HTML/CSS. Hosted on UNC Server.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.8rem;">
-                <a href="https://linkedin.com/in/zirou-liu" target="_blank">LinkedIn</a>
-            </p>
+            <p>&copy; 2026 Zirou Liu. Built with HTML/CSS. Hosted on GitHub.</p>
         </footer>
     </div>
+    <script src="files/portfolio.js"></script>
+</body>
+</html>
